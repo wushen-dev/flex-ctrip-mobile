@@ -1,0 +1,443 @@
+a{
+    text-decoration: none;
+    color: #fff;
+}
+div,
+a {
+    box-sizing: border-box;
+    /* 移动端在点击链接跳转的时候会出现一个颜色块，看起来会闪一下，影响了用户体验。解决方法就是添加一个css样式，改变其颜色，如下： */
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+*{
+    padding: 0px;
+    margin: 0px;
+}
+li{
+    list-style: none;
+}
+body {
+    max-width: 540px;
+    min-width: 320px;
+    margin: 0 auto;
+    background-color: #fafafc;
+    /* height: 1000px; */
+    padding-bottom: 50px;
+    font-size: 13px;
+    /* background: #f2f2f2;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent; */
+}
+.searchDiv {
+    position: fixed;
+    display: flex;
+    top: 0px;
+    z-index: 999;
+    /* 固定定位的盒子应该有宽度，并且和父级没关系，和屏幕有关 */
+    width: 100%;
+    /* background-color: tomato; */
+    height: 44px;
+    max-width: 540px;
+    min-width: 320px;
+    /* 子项目侧轴居中 */
+    align-items: center;
+}
+.searchDiv::after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    background-color: chartreuse;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    /* background: -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.4)),to(rgba(0,0,0,0))); */
+    background: linear-gradient(to bottom,rgba(0,0,0,.4),rgba(0,0,0,0));
+
+}
+.search {
+    flex: 1;
+    height: 28px;
+    background-color: #fff;
+    border-radius: 15px;
+    margin-left: 13px;
+    padding-left: 35px;
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 28px;
+    box-sizing: border-box;
+    background-image: url('/images/searchDiv.png');
+    background-repeat: no-repeat;
+    background-position-x: 12px;
+    background-position-y: 7px;
+    background-size: 21px auto;
+    
+}
+/* “我的” */
+.searchDiv a{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 51px;
+    height: 44px;
+    margin-top: 2px;
+    /* background-color: thistle; */
+    font-size: .75rem;
+}
+/* “我的”小图标 */
+.searchDiv a::before{
+    content: '';
+    display: block;
+    width: 22px;
+    height: 22px;
+    background: url('../images/searchDiv.png') 1px -36px no-repeat;
+    background-size: 21px auto;
+    margin-bottom: 3px;
+}
+/* 焦点图 */
+.focusDiv {
+    /* height: 247px; */
+    background-color: blueviolet;
+    overflow: hidden;
+    position: relative;
+}
+.focusDiv::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 27px;
+    background-image: url('../images/focusDivBG.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
+.focusDiv ul{
+    display: flex;
+    width: 400%;
+    font-size: 0px;
+    margin-left: -100%;
+    /* height: 247px; */
+    /* align-content: nowrap; */
+    /* background-color: chartreuse; */
+    /* animation: animation 4s; */
+    /* 动画何时开始 */
+    /* animation-delay: 2s; */
+    /* 动画播放的次数 */
+    /* animation-iteration-count: infinite; */
+    /* 运动的速度 */
+    /* animation-timing-function: ease; */
+}
+/* 轮播图动画 */
+/* @keyframes animation{
+    0% {
+        margin-left: -100%;
+    }
+    50% {
+        margin-left: -200%;
+    }
+    100% {
+        margin-left: -300%;
+    }
+} */
+ 
+.focusDiv ul li {
+    width: 100%;
+    /* flex: 2; */
+}
+.focusDiv ul li img{
+    width: 100%;
+}
+/* 本地导航 */
+.local-nav {
+    background-color: #fff;
+    position: relative;
+    border-radius: 8px;
+    margin: -52px 12px 10px;
+    padding: 4px 0px 9px 0px;
+    -webkit-box-shadow: 0 2px 6px rgba(0,0,0,.08);
+    box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+.local-nav ul {
+    display: flex;
+}
+.local-nav li {
+    display: flex;
+    flex: 1;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+}
+.local-nav li i{
+    width: 40px;
+    height: 40px;
+    /* background-color: rgb(124, 153, 153); */
+}
+.local-nav ul li i {
+    background: url("../images/local-nav.png") no-repeat;
+    background-size: 40px auto;
+}
+.local-nav ul li:nth-child(1) i{
+    background-position: 0 0;
+}
+.local-nav ul li:nth-child(2) i{
+    background-position: 0 -40px;
+}
+.local-nav ul li:nth-child(3) i{
+    background-position: 0 -80px;
+}
+.local-nav ul li:nth-child(4) i{
+    background-position: 0 -120px;
+}
+.local-nav ul li:nth-child(5) i{
+    background-position: 0 -160px;
+}
+/* 网格导航 */
+.grid-nav {
+    display: flex;
+    /* 主轴设置为Y轴 */
+    flex-direction: column;
+    height: 200px;
+    line-height: 66.7px;
+    margin: 0px 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+.grid-nav a{
+    text-align: center;
+}
+.grid-nav1,
+.grid-nav2,
+.grid-nav3{
+    flex: 1;
+    display: flex;
+}
+/* 第一行 酒店的宽度；第二行 机票的宽度；第三行 旅游的宽度 */
+.grid-nav1 a:nth-child(1),
+.grid-nav2 a:nth-child(1),
+.grid-nav3 a:nth-child(1) {
+    width: 31%;
+    padding-left: 12px;
+    text-align: left;
+}
+/* 民宿·客栈 */
+.grid-nav1 a:nth-child(2) {
+    width: 23%;
+}
+/* 特价·爆款 */
+.grid-nav1 a:nth-child(3) {
+    width: 46%;
+}
+
+/* 边框线条 */
+.grid-nav1 a:nth-child(-n + 2),
+.grid-nav2 a:nth-child(-n + 3),
+.grid-nav3 a:nth-child(-n + 3){
+    border-right: 1px solid #f2f2f2;
+}
+
+/* 第二行和第三行，从第二个开始计数，后面几个元素锁占用的空间宽度 */
+.grid-nav2 a:nth-child(n + 2),
+.grid-nav3 a:nth-child(n + 2)
+{
+    flex: 1;
+}
+/* 第一行背景色 */
+.grid-nav1{
+    background: -webkit-gradient(linear,left top,right top,from(#fa5956),color-stop(54%,#fb8650));
+    background: linear-gradient(to right,#fa5956,#fb8650 54%);
+}
+.grid-nav2{
+    border-top: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
+    background: -webkit-gradient(linear,left top,right top,from(#4b8fed),to(#53bced));
+    background: linear-gradient(to right,#4b8fed,#53bced);
+}
+.grid-nav3{
+    background: -webkit-gradient(linear,left top,right top,from(#34c2aa),to(#6cd557));
+    background: linear-gradient(to right,#34c2aa,#6cd557);
+}
+/* 酒店的背景图片 */
+.grid-nav1 a:nth-child(1){
+    background: url('../images/jdBG.png') no-repeat;
+    background-size: 73px auto;
+    background-position: right bottom;
+}
+/* 民宿·客栈背景图片 */
+.grid-nav1 a:nth-child(2){
+    background: url('../images/msBG.png') no-repeat;
+    background-size: 37px auto;
+    background-position: left bottom;
+}
+/* 特价·爆款背景图片 */
+.grid-nav1 a:nth-child(3){
+   background: linear-gradient(to right,#ffbc49,#ffd252);
+   display: flex;
+   flex: 1;
+}
+.grid-nav1 a:nth-child(3) span{
+    flex: 1;
+    color: #a05416;
+    background: url('../images/tjBG.png') right bottom no-repeat;
+    background-size: 100% auto;
+}
+/* 机票的背景图片 */
+.grid-nav2 a:nth-child(1){
+    background: url('../images/jpBG.png') right bottom no-repeat;
+    background-size: 79px auto;
+}
+/* 火车票背景图片 */
+.grid-nav2 a:nth-child(2){
+    background: url('../images/hcpBG.png') left bottom no-repeat;
+    background-size: 37px auto;
+}
+/* 旅游背景图片 */
+.grid-nav3 a:nth-child(1){
+    background: url('../images/lyBG.png') right bottom no-repeat;
+    background-size: 94px auto;
+}
+/* 高铁游背景图片 */
+.grid-nav3 a:nth-child(2){
+    background: url('../images/gtyBG.png') left bottom no-repeat;
+    background-size: 61px auto;
+}
+/* 底部功能入口 */
+.function-entry {
+    display: flex;
+    /* background-color: red; */
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+.function-entry li {
+    flex: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.function-entry li i {
+    width: 28px;
+    height: 28px;
+    background: url('../images/function-entry.png') no-repeat;
+    background-size: 28px auto;
+}
+.function-entry li span{
+    font-size: 0.85rem;
+    margin: 6px 0px 15px 0px;
+}
+/* 自由行 */
+.function-entry li:nth-child(1) i{
+    
+}
+/* wifi电话卡 */
+.function-entry li:nth-child(2) i{
+    background-position-y: -28px;
+}
+/* 保险·签证 */
+.function-entry li:nth-child(3) i{
+    background-position-y: -56px;
+}
+/* 换钞·购物 */
+.function-entry li:nth-child(4) i{
+    background-position-y: -84px;
+}
+/* 向导·包车 */
+.function-entry li:nth-child(5) i{
+    background-position-y: -112px;
+}
+/* 特价机票 */
+.function-entry li:nth-child(6) i{
+    background-position-y: -140px;
+}
+/* 礼品卡 */
+.function-entry li:nth-child(7) i{
+    background-position-y: -168px;
+}
+/* 申卡·借钱 */
+.function-entry li:nth-child(8) i{
+    background-position-y: -196px;
+}
+/* 旅拍 */
+.function-entry li:nth-child(9) i{
+    background-position-y: -224px;
+}
+/* 更多 */
+.function-entry li:nth-child(10) i{
+    background-position-y: -252px;
+}
+.footer a{
+    color: #333;
+}
+/* 页脚工具 */
+.footer-tool {
+    display: flex;
+    /* background-color: cornflowerblue; */
+    border-top: 0.5px solid rgb(228, 228, 228);
+    border-bottom: 0.5px solid rgb(230, 230, 230);
+    background-color: #fff;
+    height: 60px;
+    /* justify-content: center; */
+}
+.footer-tool > a{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.footer-tool svg{
+    width: 20px;
+    height: 20px;
+    fill: #999;
+    margin-top: -2px;
+}
+.footer-tool span{
+    font-size: 0.78rem;
+    margin-top: 5px;
+}
+/* 版本信息 */
+.footer-ver {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.footer-ver a{
+    color: #666;
+    margin: 0px 10px;
+}
+.Language {
+    position: relative;
+    padding-right: 10px;
+    color: crimson !important;
+}
+/* language 的地球图标 */
+.Language::before {
+    content: '';
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    background: url('../images/Language.png') 0 -160px no-repeat;
+    background-size: 30px auto;
+}
+/* language 下拉箭头 */
+.Language::after{
+    content: '';
+    display: inline-block;
+    position:absolute;
+    top: 2px;
+    right: -3px;
+    width: 7px;
+    height: 7px;
+    border-right: 1px solid crimson;
+    border-bottom: 1px solid crimson;
+    /* background-color: crimson; */
+    transform:rotate(45deg)
+}
+.footer p{
+    text-align: center;
+    margin-top: 10px;
+    color: #999;
+    font-size: 0.75rem;
+}
